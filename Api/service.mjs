@@ -42,11 +42,20 @@ const githubService = {
 			cSharpRepositories = [...cSharpRepositories, ...cSharpRepos];
 		}
 
-		return cSharpRepositories;
+		const reposOrderedByCreationDate =
+			this.sortByCreationDate(cSharpRepositories);
+
+		return reposOrderedByCreationDate;
 	},
 
 	getCSharpRepositories: function (repositories) {
 		return repositories.filter((repository) => repository.language === "C#");
+	},
+
+	sortByCreationDate: function (repositories) {
+		return repositories.sort(
+			(a, b) => new Date(a.created_at) - new Date(b.created_at)
+		);
 	},
 };
 
