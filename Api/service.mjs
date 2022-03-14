@@ -44,8 +44,9 @@ const githubService = {
 
 		const reposOrderedByCreationDate =
 			this.sortByCreationDate(cSharpRepositories);
+		const finalRepos = this.formatData(reposOrderedByCreationDate).splice(0, 5);
 
-		return reposOrderedByCreationDate;
+		return finalRepos;
 	},
 
 	getCSharpRepositories: function (repositories) {
@@ -56,6 +57,14 @@ const githubService = {
 		return repositories.sort(
 			(a, b) => new Date(a.created_at) - new Date(b.created_at)
 		);
+	},
+
+	formatData: function (repositories) {
+		return repositories.map((repository) => ({
+			repositoryName: repository.name,
+			repositoryDescription: repository.description,
+			repositoryCreation: repository.created_at,
+		}));
 	},
 };
 
