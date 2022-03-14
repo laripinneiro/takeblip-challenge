@@ -26,7 +26,27 @@ const githubService = {
 			currentPage++;
 		} while (responseLength === 100);
 
-		return responseData;
+		const data = this.getFinalData(responseData);
+		const finalData = {
+			avatar,
+			cSharpRepos: data,
+		};
+
+		return finalData;
+	},
+
+	getFinalData: function (data) {
+		let cSharpRepositories = [];
+		for (let i = 0; i < data.length; i++) {
+			let cSharpRepos = this.getCSharpRepositories(data[i]);
+			cSharpRepositories = [...cSharpRepositories, ...cSharpRepos];
+		}
+
+		return cSharpRepositories;
+	},
+
+	getCSharpRepositories: function (repositories) {
+		return repositories.filter((repository) => repository.language === "C#");
 	},
 };
 
