@@ -63,7 +63,6 @@ const githubService = {
 		return repositories.map((repository) => ({
 			repositoryName: repository.name,
 			repositoryDescription: repository.description,
-			repositoryCreation: repository.created_at,
 		}));
 	},
 };
