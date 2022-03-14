@@ -1,0 +1,15 @@
+{
+  "name": "takeblip-csharp-repos",
+  "version": "1.0.0",
+  "description": "As part of Take Blip's technical test, this API integrates with public GitHub API so that the chatbot can receive infos of the first 5 C# repositories.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Larissa Piñeiro",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.26.1",
+    "express": "^4.17.3"
+  }
+}
